@@ -1,0 +1,32 @@
+camera:
+  index: 0
+  resolution_w: 1280
+  resolution_h: 720
+  fps: 30
+
+imu:
+  host: "0.0.0.0"
+  port: 8888
+  buffer_size: 1024
+
+blender:
+  host: "127.0.0.1"
+  port: 9999
+  enabled: true
+
+fusion:
+  # Alpha for complementary filter: high alpha trusts IMU for high-frequency motion, 
+  # low (1-alpha) trusts camera for low-frequency absolute reference.
+  alpha: 0.98
+
+scoring:
+  # Threshold for smash detection (degrees per second)
+  velocity_threshold: 400.0
+  # Weights for the final technique score
+  weights:
+    elbow_extension: 0.3
+    wrist_speed: 0.5
+    trunk_rotation: 0.2
+  # Ideal angle targets (degrees)
+  ideal_elbow_extension: 170.0
+  ideal_trunk_rotation: 45.0
